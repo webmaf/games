@@ -1,5 +1,5 @@
 import "./App.css";
-import Mastermind from "./components/games/mastermind";
+import Mastermind from "./components/games/Mastermind.tsx";
 
 function App() {
   /**
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <Mastermind />
+      <Mastermind/>
     </>
   );
 }

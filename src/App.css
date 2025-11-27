@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.color-dark {
+  background-color: #21252B;
+}
+
+.color-light {
+  background-color: #282C34;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
