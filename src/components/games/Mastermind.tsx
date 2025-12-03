@@ -3,7 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./mastermind/utils";
 import SettingsIcon from "@mui/icons-material/Settings";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type {
   Settings,
   CheckCodeType,
@@ -24,38 +24,6 @@ export default function Mastermind() {
     "#8E24AA",
     "#FB8C00",
   ];
-  const [userCombinations, setUserCombinations] = useState<UserCombinations>(
-    []
-  );
-  const [settings, setSettings] = useState<Settings>({
-    masterCode: [],
-    amount: 4,
-    colorCodes: COLORCODES,
-    name: '',
-  });
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-
-  // const test: UserCombinations = [
-  //   {
-  //     prediction: ["green", "green", "green", "green"],
-  //     result: ["black", "white"],
-  //   },
-  // ];
-  // test[0].prediction.map
-  // test[0].prediction.result
-
-  // const _SETTINGS = {
-  //   amount: 4,
-  //   colorCodes: [
-  //     "#E53935",
-  //     "#1E88E5",
-  //     "#FDD835",
-  //     "#43A047",
-  //     "#8E24AA",
-  //     "#FB8C00",
-  //   ],
-  //   test: ["#458B74", "#6959CD", "#3A5FCD", "#CD1076", "#CDB38B", "#CD3700"],
-  // };
 
   const generateMasterCode = (
     amount: number = 4,
@@ -67,6 +35,17 @@ export default function Mastermind() {
     }
     return combination;
   };
+
+  const [userCombinations, setUserCombinations] = useState<UserCombinations>(
+    []
+  );
+  const [settings, setSettings] = useState<Settings>(() => ({
+    masterCode: generateMasterCode(4, COLORCODES),
+    amount: 4,
+    colorCodes: COLORCODES,
+    name: '',
+  }));
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const handleCheckCode: CheckCodeType = (colorCombination) => {
     const result: string[] = [];
@@ -123,12 +102,7 @@ export default function Mastermind() {
     });
   };
 
-  useEffect(() => {
-    setSettings((prevSettings) => ({
-      ...prevSettings,
-      masterCode: generateMasterCode(4, COLORCODES),
-    }));
-  }, []);
+
 
 
   return (
