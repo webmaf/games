@@ -1,10 +1,6 @@
-import { createTheme } from "@mui/material/styles";
-
-import { alpha, darken, lighten } from "@mui/material/styles";
+import { createTheme, darken, lighten } from "@mui/material/styles";
 
 const baseTheme = createTheme({
-  // Theme customization goes here as usual, including tonalOffset and/or
-  // contrastThreshold as the augmentColor() function relies on these
   components: {
     MuiButton: {
       defaultProps: {
@@ -15,7 +11,6 @@ const baseTheme = createTheme({
 });
 
 export const theme = createTheme(baseTheme, {
-  // Custom colors created with augmentColor go here
   palette: {
     salmon: baseTheme.palette.augmentColor({
       color: {
@@ -38,12 +33,11 @@ export const backgroundRadialGradient = (color: string) => {
 };
 
 export const backgroundLinearGradient = (color: string) => {
-  return `linear-gradient(90deg,
+  return `linear-gradient(135deg,
     ${color} 0%,
     ${lighten(color, 0.2)} 20%,
     ${color} 40%,
     ${darken(color, 0.4)} 70%,
-    ${darken(color, 0.9)} 90%,
-    #21252B 100%
+    ${darken(color, 0.8)} 100%
   )`;
 };

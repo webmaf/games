@@ -1,0 +1,4 @@
+/* Disable text selection and cursor effects in Mastermind game */
+.mastermind-container {
+  user-select: none;
+}
