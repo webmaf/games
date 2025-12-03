@@ -26,6 +26,7 @@ export interface GameBoardProps {
 export interface OptionPanelProps {
   settings: Settings;
   changeSettings: ChangeSettingsType;
+  onClose?: () => void;
 }
 
 export interface Settings {

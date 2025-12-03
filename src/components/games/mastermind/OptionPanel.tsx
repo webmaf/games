@@ -16,6 +16,7 @@ import type { OptionPanelProps } from "./types";
 export default function OptionPanel({
   settings,
   changeSettings,
+  onClose,
 }: OptionPanelProps) {
   const fieldName = useRef<HTMLInputElement>(null);
   const fieldAmount = useRef<HTMLInputElement>(null);
@@ -39,6 +40,9 @@ export default function OptionPanel({
       name: fieldName.current?.value || "",
       amount: parseInt(fieldAmount.current?.value || "0") || settings.amount,
     });
+    if (onClose) {
+      onClose();
+    }
   };
 
   return (
@@ -74,7 +78,7 @@ export default function OptionPanel({
         onChange={handleChangeSliderValue}
         value={amount}
       ></Slider>
-      <Button onClick={handleSubmitGameSettings}>SUBMIT</Button>
+      <Button onClick={handleSubmitGameSettings}>Save</Button>
     </Stack>
   );
 }

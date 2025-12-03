@@ -1,6 +1,7 @@
-import { Container, Divider, Stack } from "@mui/material";
+import { Container, Divider, Stack, Dialog, DialogContent, DialogTitle, Button } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./mastermind/utils";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 import { useState, useEffect } from "react";
 import type {
@@ -32,6 +33,7 @@ export default function Mastermind() {
     colorCodes: COLORCODES,
     name: '',
   });
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   // const test: UserCombinations = [
   //   {
@@ -133,6 +135,11 @@ export default function Mastermind() {
     <ThemeProvider theme={theme}>
       <Container maxWidth="xs">
         <Stack gap={2}>
+          <Stack direction="row" justifyContent="flex-end">
+            <Button onClick={() => setIsSettingsOpen(true)}>
+              <SettingsIcon />
+            </Button>
+          </Stack>
           {/* <Button variant="contained" color="salmon">sss</Button> */}
           <GameBoard userCombinations={userCombinations} />
           <Divider />
@@ -140,10 +147,17 @@ export default function Mastermind() {
             colors={settings.colorCodes}
             checkCode={handleCheckCode}
           />
-          <OptionPanel
-            settings={settings}
-            changeSettings={handleChangeSettings}
-          />
+
+          <Dialog open={isSettingsOpen} onClose={() => setIsSettingsOpen(false)}>
+            <DialogTitle>Settings</DialogTitle>
+            <DialogContent>
+              <OptionPanel
+                settings={settings}
+                changeSettings={handleChangeSettings}
+                onClose={() => setIsSettingsOpen(false)}
+              />
+            </DialogContent>
+          </Dialog>
           {/* <ColorPanel /> */}
         </Stack>
       </Container>
