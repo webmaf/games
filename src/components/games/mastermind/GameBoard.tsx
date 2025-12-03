@@ -1,13 +1,12 @@
 import { Paper, Stack, Grid } from "@mui/material";
+import { backgroundLinearGradient } from "./utils";
 import type { GameBoardProps } from "./types";
 
 export default function GameBoard({ userCombinations }: GameBoardProps) {
   return (
     <>
       {userCombinations.map((combo, index) => {
-        console.log([...combo.prediction]);
         return (
-          // <Stack gap={2} direction={"row"}>
           <Grid container key={index}>
             <Grid size={9} direction="row">
               <Stack gap={2} direction={"row"}>
@@ -18,7 +17,7 @@ export default function GameBoard({ userCombinations }: GameBoardProps) {
                     sx={{
                       border: "1px solid gray",
                       borderRadius: 2,
-                      backgroundColor: combo,
+                      background: backgroundLinearGradient(combo),
                       width: "40px",
                       height: "40px",
                     }}
@@ -53,7 +52,6 @@ export default function GameBoard({ userCombinations }: GameBoardProps) {
               </Grid>
             </Grid>
           </Grid>
-          // </Stack>
         );
       })}
     </>

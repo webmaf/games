@@ -3,6 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./mastermind/utils";
 import SettingsIcon from "@mui/icons-material/Settings";
 
+
 import { useState } from "react";
 import type {
   Settings,
@@ -14,6 +15,8 @@ import type {
 import GameBoard from "./mastermind/GameBoard";
 import SubmitPanel from "./mastermind/SubmitPanel";
 import OptionPanel from "./mastermind/OptionPanel";
+
+import "./mastermind/mastermind.css";
 
 export default function Mastermind() {
   const COLORCODES = [
@@ -107,7 +110,7 @@ export default function Mastermind() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xs">
+      <Container maxWidth="xs" className="mastermind-container">
         <Stack gap={2}>
           <Stack direction="row" justifyContent="flex-end">
             <Button onClick={() => setIsSettingsOpen(true)}>

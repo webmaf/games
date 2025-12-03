@@ -5,7 +5,6 @@ import { backgroundRadialGradient, backgroundLinearGradient } from "./utils";
 import type { SubmitPanelProps } from "./types";
 
 export default function SubmitPanel({ checkCode, colors }: SubmitPanelProps) {
-  // const colors = ["red", "green", "blue", "yellow", "pink", "brown"];
   const [colorCombination, setColorCombination] = useState<string[]>([]);
 
   const handleSelectColor = (color: string) => {
@@ -37,7 +36,6 @@ export default function SubmitPanel({ checkCode, colors }: SubmitPanelProps) {
       <Grid size={9}>
         <Stack spacing={2} direction="row">
           {colorCombination.map((color, index) => {
-            console.log(color)
             return (
               <Paper
                 key={index}
@@ -46,7 +44,7 @@ export default function SubmitPanel({ checkCode, colors }: SubmitPanelProps) {
                 sx={{
                   border: "1px solid gray",
                   borderRadius: 2,
-                  backgroundColor: color,
+                  background: backgroundLinearGradient(color),
                   width: "24px",
                   height: "24px",
                 }}
@@ -80,12 +78,10 @@ export default function SubmitPanel({ checkCode, colors }: SubmitPanelProps) {
                   backgroundColor: color,
                   width: "24px",
                   height: "24px",
-
                   background: backgroundRadialGradient(color),
                   fill: "transparent",
                 }}
               >
-
                 <span></span>
               </IconButton>
             );
