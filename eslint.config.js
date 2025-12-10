@@ -17,7 +17,13 @@ export default defineConfig([
     ],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: { ...globals.browser, ...globals.node },
+    },
+  },
+  {
+    files: ["src/tests/**/*.{test,spec}.{ts,tsx}"],
+    languageOptions: {
+      globals: globals.nodeBuiltin,
     },
   },
 ]);

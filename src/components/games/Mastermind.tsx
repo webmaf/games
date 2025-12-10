@@ -34,7 +34,12 @@ export default function Mastermind() {
   ): string[] => {
     const combination = [];
     for (let i = 0; i < amount; i++) {
-      combination.push(colors[Math.floor(Math.random() * amount)]);
+      // Use the length of the colors array to compute a valid random index.
+      // Previously this used `amount` which could be larger than `colors.length`
+      // and caused undefined entries when a single color array was passed.
+      const max = colors.length;
+      const index = max > 0 ? Math.floor(Math.random() * max) : 0;
+      combination.push(colors[index]);
     }
     return combination;
   };
